@@ -105,6 +105,9 @@ document.addEventListener("DOMContentLoaded", function () {
             notificationList.appendChild(listItem);
         }
     }
+L.marker([21.2514, 81.6296]).addTo(map)
+    .bindPopup("Test Marker Appearing?")
+    .openPopup();
 
     // Fetch Data Every 15 Seconds
     fetchThingSpeakData();
