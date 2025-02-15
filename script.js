@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function () {
     // Initialize Map
     var map = L.map('map').setView([21.2514, 81.6296], 14);
@@ -63,18 +64,18 @@ document.addEventListener("DOMContentLoaded", function () {
                     // If marker doesn't exist, create one
                     binMarker = L.marker([binLat, binLng], { icon: selectedIcon })
                         .addTo(map)
-                        .bindPopup(🚮 <b>Bin Fill Level:</b> ${fillLevel.toFixed(2)}%)
+                        .bindPopup(`🚮 <b>Bin Fill Level:</b> ${fillLevel.toFixed(2)}%`)
                         .openPopup();
                 } else {
                     // If marker exists, update position, icon, and popup content
                     binMarker.setLatLng([binLat, binLng])
                         .setIcon(selectedIcon)
-                        .bindPopup(🚮 <b>Bin Fill Level:</b> ${fillLevel.toFixed(2)}%)
+                        .bindPopup(`🚮 <b>Bin Fill Level:</b> ${fillLevel.toFixed(2)}%`)
                         .openPopup();
                 }
 
                 // Update Status Display
-                document.getElementById("status").innerText = 📊 Latest Bin Level: ${fillLevel.toFixed(2)}%;
+                document.getElementById("status").innerText = `📊 Latest Bin Level: ${fillLevel.toFixed(2)}%`;
 
                 // Update Notification List
                 updateNotificationList(fillLevel);
@@ -101,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (fillLevel >= 75) {
             const listItem = document.createElement("li");
             listItem.className = "notification-item";
-            listItem.innerHTML = <strong>🚨 Alert:</strong> City Bin is Full! (Fill Level: ${fillLevel}%);
+            listItem.innerHTML = `<strong>🚨 Alert:</strong> City Bin is Full! (Fill Level: ${fillLevel}%)`;
             notificationList.appendChild(listItem);
         }
     }
@@ -109,4 +110,4 @@ document.addEventListener("DOMContentLoaded", function () {
     // Fetch Data Every 15 Seconds
     fetchThingSpeakData();
     setInterval(fetchThingSpeakData, 15000);
-}); 
+});
