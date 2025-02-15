@@ -1,0 +1,251 @@
+:root {
+  --primary-color: #4caf50;
+  --secondary-color: #2196f3;
+  --background-color: #f4f4f4;
+  --text-color: #333;
+  --alert-red: #f44336;
+  --alert-yellow: #ffeb3b;
+  --alert-green: #4caf50;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.navbar {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  width: 40px;
+  height: 40px;
+  margin-right: 1rem;
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.container {
+  display: flex;
+  height: calc(100vh - 70px);
+}
+
+.sidebar {
+  width: 300px;
+  background-color: white;
+  padding: 1rem;
+  overflow-y: auto;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+  margin-top: 0;
+  color: var(--primary-color);
+}
+
+#alertList {
+  list-style-type: none;
+  padding: 0;
+}
+
+.alert-item {
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.alert-item h3 {
+  margin-top: 0;
+  color: var(--secondary-color);
+}
+
+.alert-item p {
+  margin: 0.5rem 0;
+}
+
+.status {
+  font-weight: bold;
+}
+
+.status.full {
+  color: var(--alert-red);
+}
+
+.status.near-full {
+  color: var(--alert-yellow);
+}
+
+.status.normal {
+  color: var(--alert-green);
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 1rem;
+}
+
+#map {
+  height: 100%;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    max-height: 300px;
+  }
+
+  #map {
+    height: calc(100vh - 370px);
+  }
+}
+
+/* Sidebar styling */
+.sidebar {
+  width: 250px;
+  background: #f8f9fa;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Small horizontal strip for icons */
+.icon-strip {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  background: #ddd;
+  padding: 10px 0;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+/* Icons inside the strip */
+.icon-link img {
+  width: 30px; /* Smaller icons */
+  height: 30px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.icon-link img:hover {
+  transform: scale(1.2); /* Slight zoom on hover */
+}
+
+/* Other sidebar content */
+.sidebar-content {
+  text-align: center;
+  margin-top: 20px;
+}
+/* Hero Header */
+.hero-header {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  background: url('header-placeholder.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Keep text centered */
+  padding: 20px;
+  color: white;
+  overflow: hidden;
+}
+
+/* Dark Overlay for Readability */
+.header-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Logo Styling - Move to Left */
+.logo {
+  position: absolute;
+  left: 20px; /* Adjust spacing */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100px;
+  height: auto;
+  animation: logoBounce 1.5s infinite alternate;
+}
+
+/* Text Styling (Remain Centered) */
+.title {
+  font-size: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: slideDown 1s ease-in-out;
+}
+
+.subtitle {
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  animation: fadeIn 2s ease-in-out;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes logoBounce {
+  from { transform: translateY(0); }
+  to { transform: translateY(-5px); }
+}
+/* Center the header content */
+.header-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+  z-index: 2;
+}
+
+/* White and centered title */
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #ffffff; /* Pure white text */
+}
+
+/* White subtitle */
+.subtitle {
+  font-size: 20px;
+  font-weight: 400;
+  color: #ffffff; /* White text */
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Waste Management</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="hero-header">
+        <div class="header-overlay"></div> <!-- Dark Overlay -->
+        <img src="Binsense.png" alt="Logo" class="logo"> <!-- Logo stays on the left -->
+        <div class="header-content">
+            <h1 class="title">Smart Waste Management System</h1>
+            <p class="subtitle">Municipality Dashboard | Track & Optimize Waste Collection</p>
+        </div>
+    </header>
+    
+    
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- Small horizontal strip with icons -->
+            <div class="icon-strip">
+                <a href="dashboard.html" class="icon-link"><img src="Notice.png" alt="Dashboard"></a>
+                <a href="alerts.html" class="icon-link"><img src="Alert.png" alt="Alerts"></a>
+                <a href="settings.html" class="icon-link"><img src="Feedback.png" alt="Settings"></a>
+                <a href="reports.html" class="icon-link"><img src="Reports.png" alt="Reports"></a>
+                <a href="help.html" class="icon-link"><img src="icons/help.png" alt="Help"></a>
+            </div>
+
+            <!-- Notification Section for Filled Bins -->
+            <div class="notification-section">
+                <h3>🛑 Alerts: Full Bins</h3>
+                <ul id="notificationList">
+                    <!-- Notifications will be inserted dynamically here -->
+                </ul>
+            </div>
+
+            <!-- Other sidebar content -->
+            <div class="sidebar-content">
+                <p>more....</p>
+            </div>
+        </aside>
+        
+        <main class="main-content">
+            <div id="map"></div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="notifications.js"></script> <!-- Separate script for notifications -->
+    <script src="header-animation.js"></script> <!-- JS for Header Animations -->
+</body>
+</html>
