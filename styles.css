@@ -16,148 +16,21 @@ body {
   color: var(--text-color);
 }
 
-/* Navbar */
 .navbar {
   background-color: var(--primary-color);
   color: white;
   padding: 1rem;
   display: flex;
   align-items: center;
+  position: relative; /* Ensure proper positioning */
 }
 
-/* Layout */
-.container {
-  display: flex;
-  height: calc(100vh - 70px); /* Full height minus navbar */
-}
-
-/* Sidebar */
-.sidebar {
-  width: 300px; /* Fixed width */
-  background: white;
-  padding: 1rem;
-  overflow-y: auto;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Map Section */
-.map-container {
-  flex-grow: 1; /* Takes remaining space */
-  height: 100%;
-  padding: 1rem; /* Optional padding */
-}
-
-#map {
-  width: 100%;
-  height: 100%;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-  }
-
-  .sidebar {
-    width: 100%;
-    height: 40vh; /* Sidebar takes 40% height */
-  }
-
-  .map-container {
-    height: 60vh; /* Map takes 60% height */
-  }
-}
-
-/* Sidebar Styling */
-.icon-strip {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  background: #ddd;
-  padding: 10px 0;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
-
-.icon-link img {
-  width: 30px;
-  height: 30px;
-  transition: transform 0.2s ease-in-out;
-}
-
-.icon-link img:hover {
-  transform: scale(1.2);
-}
-
-/* Hero Header */
-.hero-header {
-  position: relative;
-  width: 100%;
-  height: 250px;
-  background: url('img1.jpg') center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  color: white;
-  overflow: hidden;
-}
-
-/* Overlay */
-.header-overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-}
-
-/* Header Content */
-.header-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  width: 100%;
-  z-index: 2;
-}
-
-/* Title & Subtitle */
-.title {
-  font-size: 36px;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: #ffffff;
-}
-
-.subtitle {
-  font-size: 20px;
-  font-weight: 400;
-  color: #ffffff;
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideDown {
-  from { transform: translateY(-20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
-@keyframes logoBounce {
-  from { transform: translateY(0); }
-  to { transform: translateY(-5px); }
-}
-/* Logo in Navbar */
+/* ✅ Fix Logo Position in Navbar */
 .logo {
   display: flex;
   align-items: center;
   position: absolute;
-  left: 20px; /* Ensure it stays in the left corner */
+  left: 20px; /* Keep it at the left corner */
   top: 50%;
   transform: translateY(-50%);
 }
@@ -166,16 +39,67 @@ body {
   width: 40px;
   height: 40px;
   margin-right: 10px;
+  animation: logoBounce 1.5s infinite alternate; /* ✅ Bounce animation restored */
 }
 
-/* Restore Bounce Animation */
 @keyframes logoBounce {
   0% { transform: translateY(0); }
   50% { transform: translateY(-5px); }
   100% { transform: translateY(0); }
 }
 
-.logo-img {
-  animation: logoBounce 1.5s infinite alternate;
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
+/* ✅ Sidebar Styling (Fixed Size & Position) */
+.container {
+  display: flex;
+  height: calc(100vh - 70px);
+}
+
+.sidebar {
+  width: 300px; /* Fixed width */
+  background-color: white;
+  padding: 1rem;
+  overflow-y: auto;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+  margin-top: 0;
+  color: var(--primary-color);
+}
+
+/* ✅ Map Adjustments (50% Width, No Sidebar Overlap) */
+.main-content {
+  flex-grow: 1;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#map {
+  width: 75%; /* ✅ Adjust width */
+  height: 500px; /* ✅ Fixed height */
+  max-width: 800px; /* Prevents map from stretching */
+  border-radius: 10px; /* Smooth edges */
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    max-height: 300px;
+  }
+
+  #map {
+    width: 100%; /* Full width on smaller screens */
+    height: 400px;
+  }
+}
