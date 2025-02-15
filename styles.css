@@ -25,46 +25,26 @@ body {
   align-items: center;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-}
-
-.logo-img {
-  width: 40px;
-  height: 40px;
-  margin-right: 1rem;
-}
-
-.logo-text {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-/* Main Layout */
+/* Layout */
 .container {
   display: flex;
-  height: calc(100vh - 70px); /* Adjust height based on navbar */
-  flex-direction: column; /* Stack sidebar and map vertically */
+  height: calc(100vh - 70px); /* Full height minus navbar */
 }
 
 /* Sidebar */
 .sidebar {
-  width: 100%;
-  height: 50vh; /* Half screen height */
-  background: #f8f9fa;
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 300px; /* Fixed width */
+  background: white;
+  padding: 1rem;
   overflow-y: auto;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Map Section */
 .map-container {
-  width: 100%;
-  height: 50vh; /* Half screen height */
+  flex-grow: 1; /* Takes remaining space */
+  height: 100%;
+  padding: 1rem; /* Optional padding */
 }
 
 #map {
@@ -79,12 +59,34 @@ body {
   }
 
   .sidebar {
-    height: 40vh; /* Adjust for small screens */
+    width: 100%;
+    height: 40vh; /* Sidebar takes 40% height */
   }
 
   .map-container {
-    height: 60vh;
+    height: 60vh; /* Map takes 60% height */
   }
+}
+
+/* Sidebar Styling */
+.icon-strip {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  background: #ddd;
+  padding: 10px 0;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.icon-link img {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.icon-link img:hover {
+  transform: scale(1.2);
 }
 
 /* Hero Header */
@@ -101,7 +103,7 @@ body {
   overflow: hidden;
 }
 
-/* Dark Overlay */
+/* Overlay */
 .header-overlay {
   position: absolute;
   width: 100%;
@@ -120,7 +122,7 @@ body {
   z-index: 2;
 }
 
-/* Title */
+/* Title & Subtitle */
 .title {
   font-size: 36px;
   font-weight: bold;
@@ -129,10 +131,24 @@ body {
   color: #ffffff;
 }
 
-/* Subtitle */
 .subtitle {
   font-size: 20px;
   font-weight: 400;
   color: #ffffff;
 }
 
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes logoBounce {
+  from { transform: translateY(0); }
+  to { transform: translateY(-5px); }
+}
