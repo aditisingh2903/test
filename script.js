@@ -11,9 +11,9 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(() => { map.invalidateSize(); }, 1000);
 
     // Icons for different fill levels (Ensure correct paths)
-    var greenBinIcon = L.icon({ iconUrl: 'static/icons/green.png', iconSize: [32, 32] });
-    var yellowBinIcon = L.icon({ iconUrl: 'static/icons/yello.png', iconSize: [32, 32] });
-    var redBinIcon = L.icon({ iconUrl: 'static/icons/red.png', iconSize: [32, 32] });
+    var greenBinIcon = L.icon({ iconUrl: 'green.png', iconSize: [32, 32] });
+    var yellowBinIcon = L.icon({ iconUrl: 'yello.png', iconSize: [32, 32] });
+    var redBinIcon = L.icon({ iconUrl: 'red.png', iconSize: [32, 32] });
 
     // Placeholder for marker
     var binMarker = null;
