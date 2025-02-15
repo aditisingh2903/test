@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () { 
+document.addEventListener("DOMContentLoaded", function () {
     // Initialize Map
     var map = L.map('map').setView([21.2514, 81.6296], 14);
 
@@ -10,10 +10,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Force Map to Render Properly
     setTimeout(() => { map.invalidateSize(); }, 1000);
 
-    // Icons for different fill levels
-    var greenBinIcon = L.icon({ iconUrl: 'green dustbin.png', iconSize: [32, 32] });
-    var yellowBinIcon = L.icon({ iconUrl: 'yellow dustbin.png', iconSize: [32, 32] });
-    var redBinIcon = L.icon({ iconUrl: 'red dustbin.png', iconSize: [32, 32] });
+    // Icons for different fill levels (Ensure correct paths)
+    var greenBinIcon = L.icon({ iconUrl: 'static/icons/green-bin.jpg', iconSize: [32, 32] });
+    var yellowBinIcon = L.icon({ iconUrl: 'static/icons/yellow-dustbin.jpg', iconSize: [32, 32] });
+    var redBinIcon = L.icon({ iconUrl: 'static/icons/red-dustbin.jpg', iconSize: [32, 32] });
 
     // Placeholder for marker
     var binMarker = null;
@@ -33,8 +33,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
                 let latestData = data.feeds[0];
-                let fillLevel = parseFloat(latestData.field1); // Bin Fill Percentage
+                let fillLevel = parseFloat(latestData.field1);  // Bin Fill Percentage
 
+                // Check if the fill level is valid
                 if (isNaN(fillLevel)) {
                     console.error("Received invalid data:", latestData);
                     document.getElementById("error").style.display = "block";
@@ -43,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     document.getElementById("error").style.display = "none";
                 }
 
-                // Example Coordinates (Replace with actual bin coordinates)
+                // Bin Coordinates (Replace with actual bin coordinates)
                 let binLat = 21.2514;
                 let binLng = 81.6296;
 
@@ -51,27 +52,25 @@ document.addEventListener("DOMContentLoaded", function () {
                 let selectedIcon;
                 if (fillLevel >= 75) {
                     selectedIcon = redBinIcon;  // Red (Full)
-                } else if (fillLevel >= 45 && fillLevel < 75) {
+                } else if (fillLevel >= 45) {
                     selectedIcon = yellowBinIcon;  // Yellow (Half-Full)
                 } else {
                     selectedIcon = greenBinIcon;  // Green (Low)
                 }
 
-                // **Fixed: Properly Creating and Updating Marker**
+                // Create or Update Marker
                 if (!binMarker) {
-                    // If marker doesn't exist, create it
+                    // If marker doesn't exist, create one
                     binMarker = L.marker([binLat, binLng], { icon: selectedIcon })
                         .addTo(map)
                         .bindPopup(`🚮 <b>Bin Fill Level:</b> ${fillLevel.toFixed(2)}%`)
                         .openPopup();
-                    console.log("Marker created:", binMarker);
                 } else {
-                    // If marker exists, update position, icon, and popup
+                    // If marker exists, update position, icon, and popup content
                     binMarker.setLatLng([binLat, binLng])
                         .setIcon(selectedIcon)
-                        .setPopupContent(`🚮 <b>Bin Fill Level:</b> ${fillLevel.toFixed(2)}%`)
+                        .bindPopup(`🚮 <b>Bin Fill Level:</b> ${fillLevel.toFixed(2)}%`)
                         .openPopup();
-                    console.log("Marker updated:", binMarker);
                 }
 
                 // Update Status Display
