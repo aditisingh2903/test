@@ -152,3 +152,30 @@ body {
   from { transform: translateY(0); }
   to { transform: translateY(-5px); }
 }
+/* Logo in Navbar */
+.logo {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left: 20px; /* Ensure it stays in the left corner */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.logo-img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+/* Restore Bounce Animation */
+@keyframes logoBounce {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
+}
+
+.logo-img {
+  animation: logoBounce 1.5s infinite alternate;
+}
+
