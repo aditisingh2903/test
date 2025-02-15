@@ -21,7 +21,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Function to Fetch Data from ThingSpeak
   function fetchThingSpeakData() {
       console.log("Fetching ThingSpeak data...");
-
       fetch('https://api.thingspeak.com/channels/2832905/fields/1.json?results=1')
           .then(response => response.json())
           .then(data => {
@@ -54,18 +53,19 @@ document.addEventListener("DOMContentLoaded", function () {
                       selectedIcon = greenBinIcon;  // Green (Low)
                   }
 
-                  console.log(`Updating bin marker at (${binLat}, ${binLng}) with fill level ${fillLevel}%`);
-
                   // Create or Update Marker
                   if (!binMarker) {
-                      binMarker = L.marker([binLat, binLng], { icon: selectedIcon }).addTo(map);
-                  }
-                  
                   // Update marker position, icon, and popup content
                   binMarker.setLatLng([binLat, binLng])
                       .setIcon(selectedIcon)
                       .bindPopup(`🚮 <b>Bin Fill Level:</b> ${fillLevel.toFixed(2)}%`)
                       .openPopup(); // Ensure the popup opens immediately
+                } else {
+                     binMarker = L.marker([binLat, binLng], { icon: selectedIcon })
+                     .addTo(map)
+                     .bindPopup(`Bin Fill Level: ${fillLevel.toFixed(2)}%`)
+                     .openPopup();
+                  }
 
                   // Update Status Display
                   document.getElementById("status").innerText = `📊 Latest Bin Level: ${fillLevel.toFixed(2)}%`;
