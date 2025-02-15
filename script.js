@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }).addTo(map);
 
     // Force Map to Render Properly
-    setTimeout(() => { map.invalidateSize(); }, 1000);
+    setTimeout(() => { map.invalidateSize(); }, 500);
 
     // Icons for different fill levels (Ensure correct paths)
     var greenBinIcon = L.icon({ iconUrl: 'green.png', iconSize: [32, 32] });
